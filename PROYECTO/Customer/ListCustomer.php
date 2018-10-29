@@ -67,9 +67,19 @@ if (isset($_SESSION['error_msg'])) {
 
         <main class="container">
             <div class="row">
+                <h3>Listing Customers</h3>
+                <div>
+                    <form class="form-inline my-2 my-md-0">
+                        <input class="form-control" type="text" placeholder="Search">
+                    </form>
+
+                </div>
+            </div>
+            <div class="row">
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th>[]</th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -84,7 +94,8 @@ if (isset($_SESSION['error_msg'])) {
                             //var_dump($clientes);
                             foreach ($clientes as $value) {
                                 echo '<tr>';
-                                 echo '<td>' . $value['CUSTOMER_ID'] . "</td>";
+                                echo '<td><input type="checkbox" class="form-check-input" value=""></td>';
+                                echo '<td>' . $value['CUSTOMER_ID'] . "</td>";
                                 echo '<td>' . $value['CUSTOMER_NAME'] . "</td>";
                                 echo '<td>' . $value['CUSTOMER_EMAIL'] . "</td>";
                                 echo '<td>' . $value['CUSTOMER_ADDRESS'] . "</td>";
@@ -98,8 +109,21 @@ if (isset($_SESSION['error_msg'])) {
                         ?>
                     </tbody>
                 </table>
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-
+            <div class="row float-right mr-auto">
+                <button type="button" class="btn btn-danger btn-sm">Delete Selected</button>
+                <button type="button" class="btn btn-success btn-sm">Add New</button>
+            </div>
         </main>
 
         <footer class="footer">
