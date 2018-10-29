@@ -48,10 +48,10 @@ if (isset($_SESSION['error_msg'])) {
                             <a class="nav-link" href="Index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Customers</a>
+                            <a class="nav-link" href="Customer/ListCustomer.php">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Addresses</a>
+                            <a class="nav-link" href="Address/ListAddress.php">Addresses</a>
                         </li>
 
                     </ul>
