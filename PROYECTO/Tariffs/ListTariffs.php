@@ -30,9 +30,8 @@ if (isset($_SESSION['error_msg'])) {
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Tariffs</title>
-        <link href="../Bootstrap4/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../Bootstrap4/js/bootstrap.min.js" type="text/javascript"></script>
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.css" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="../images/mp4.png"/>
         <link href="../styles.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -57,7 +56,7 @@ if (isset($_SESSION['error_msg'])) {
                             <a class="nav-link" href="#">Addresses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ListTariffs.php">Tarriffs</a>
+                            <a class="nav-link" href="ListTariffs.php">Tariffs</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-md-0">
@@ -70,23 +69,16 @@ if (isset($_SESSION['error_msg'])) {
         <main class="container">
             <div class="row">
                 <h3>Listing Tariffs</h3>
-                <div>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
-
-                </div>
             </div>
-            <div class="row">
-                <table class="table table-hover">
+            <div >
+                <table data-toggle="table" id="tableTariffs" class="table table-hover">
                     <thead>
                         <tr>
-                            <th>[]</th>
-                            <th>ID</th>
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Rate</th>
-                            <th>Detail</th>
+                            <th data-field="Id" data-sortable="true">Id</th>
+                            <th data-field="Type" data-sortable="true">Type</th>
+                            <th data-field="Name" data-sortable="true">Name</th>
+                            <th data-field="Rate" data-sortable="true">Rate</th>
+                            <th data-field="Detail" data-sortable="true">Detail</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -96,7 +88,6 @@ if (isset($_SESSION['error_msg'])) {
                             //var_dump($clientes);
                             foreach ($tariffs as $value) {
                                 echo '<tr>';
-                                echo '<td><input type="checkbox" class="form-check-input" value=""></td>';
                                 echo '<td>' . $value['TARIFF_ID'] . "</td>";
                                 echo '<td>' . $value['TARIFF_TYPE_DESCRIPTION'] . "</td>";
                                 echo '<td>' . $value['TARIFF_NAME'] . "</td>";
@@ -111,16 +102,6 @@ if (isset($_SESSION['error_msg'])) {
                         ?>
                     </tbody>
                 </table>
-                <nav aria-label="...">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             <div class="row float-right mr-auto">
                 <button type="button" class="btn btn-danger btn-sm">Delete Selected</button>
@@ -132,7 +113,12 @@ if (isset($_SESSION['error_msg'])) {
             <div class="container">
                 <span class="text-muted">Place sticky footer content here.</span>
             </div>
-        </footer>
+        </footer>  
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			    crossorigin="anonymous"></script>           
+        <script src="../js/Tariffs/Tariff.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.js"></script> 
     </body>
 </html>
 
