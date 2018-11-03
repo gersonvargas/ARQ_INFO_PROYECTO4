@@ -12,7 +12,49 @@ INSERT INTO PHONEBILL.ref_tariff_types VALUES(2,'TariffType_02');
 /* Tariff */
 INSERT INTO PHONEBILL.Tariffs VALUES(1,1,'Tariff_01',4,'Detail_01');
 INSERT INTO PHONEBILL.Tariffs VALUES(2,2,'Tariff_02',5,'Detail_02');
+INSERT INTO PHONEBILL.Tariffs VALUES(3,2,'Tariff_04',5,'Detail_02');
+INSERT INTO PHONEBILL.Tariffs VALUES(4,2,'Tariff_05',5,'Detail_02');
+INSERT INTO PHONEBILL.Tariffs VALUES(5,2,'Tariff_06',5,'Detail_02');
+INSERT INTO PHONEBILL.Tariffs VALUES(6,2,'Tariff_07',5,'Detail_02');
+INSERT INTO PHONEBILL.Tariffs VALUES(7,2,'Tariff_08',5,'Detail_02');
 
 /* CUSTOMER */
 INSERT INTO PHONEBILL.CUSTOMER VALUES(1,'Gerson','gerson@gmail.com','En la escuela',1,'First customer!');
 INSERT INTO PHONEBILL.CUSTOMER VALUES(2,'Osvaldo','osvaldo@gmail.com','En la Universidad',1,'Second customer!');
+
+
+INSERT INTO PHONEBILL.REF_ADDRESS_TYPE VALUES(1,'BILLING');
+INSERT INTO PHONEBILL.REF_ADDRESS_TYPE VALUES(2,'RESIDENTIAL');
+
+
+INSERT INTO  PHONEBILL.ADDRESSES VALUES(
+   1,
+   'LINE 1',
+   'LINE 2',
+   'LINE 3',
+   'HEREDIA',
+   '200534',
+   'HEREDIA',
+   'COSTA RICA',
+   'NEXT TO THE POPS ICE CREAM SHOP');
+INSERT INTO  PHONEBILL.ADDRESSES VALUES(
+   2,
+   'LINE 2',
+   'LINE 2',
+   'LINE 2',
+   'SAN JOSE',
+   '200534',
+   'SAN JOSE',
+   'COSTA RICA',
+   'AT UNA LEFT HAND');
+   
+  INSERT INTO PHONEBILL.CUSTOMER_ADDRESSES VALUES(
+   1,
+   1,
+   1,
+   5,
+   CURRENT_DATE,
+   DATE_ADD(CURDATE(), INTERVAL 30 DAY));
+
+commit;
+ --- END ---

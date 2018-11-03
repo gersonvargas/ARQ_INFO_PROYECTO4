@@ -6,7 +6,7 @@ class Addreess {
     public static function getAddresses() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT * FROM ADDRESS");
+            $stmt = $dbh->prepare("SELECT * FROM ADDRESSES");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
