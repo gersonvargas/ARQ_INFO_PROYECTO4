@@ -1,6 +1,21 @@
 <?php
 include_once("Customer.php");
-$clientes = Customer::getCustomers();
+
+
+if (isset($_POST['metodo'])) {
+    if ($_POST['metodo'] == 'buscar') {
+        $valor_buscado = $_POST['busqueda'];
+        if ($valor_buscado !== '') {
+           $clientes = Customer::getCustomerID($valor_buscado);
+        } else {
+           $clientes = Customer::getCustomers();
+        }
+    } else {
+       $clientes = Customer::getCustomers();
+    }
+} else {
+    $clientes = Customer::getCustomers();
+}
 
 if (!isset($_SESSION['login'])) {
     // header("Location: " . "../index.php");
@@ -67,11 +82,12 @@ if (isset($_SESSION['error_msg'])) {
         <main class="container">
             <div class="row">
                 <h3>Listing Customers</h3>
-                <div>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search">
+                <div>                   
+                    <form action='ListCustomer.php' method='POST' class="form-inline my-2 my-md-0">
+                        <input type="hidden" name="metodo" value="buscar" placeholder="Buscar"/>
+                        <input class="form-control" type="text" name="busqueda" placeholder="Buscar archivos"/>
+                        <button type="submit" name="submit"><img src="../Images/busqueda.png"></button>
                     </form>
-
                 </div>
             </div>
             <div class="row">
@@ -88,6 +104,9 @@ if (isset($_SESSION['error_msg'])) {
                         </tr>
                     </thead>
                     <tbody>
+
+
+
                         <?php
                         if (count($clientes) > 0) {
                             //var_dump($clientes);

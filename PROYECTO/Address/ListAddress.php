@@ -104,7 +104,7 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '</tr>';
                             }
                         } else {
-                            echo '<p class="alert alert-warning"> There are no customers! </p>';
+                            echo '<p class="alert alert-warning"> There are no Addresses! </p>';
                         }
                         ?>
                     </tbody>
