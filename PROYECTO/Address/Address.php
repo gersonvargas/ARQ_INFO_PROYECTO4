@@ -1,7 +1,7 @@
 <?php
 include_once("../Conexion.php");
 include_once("../App.php");
-class Customer {
+class Addreess {
 
     public static function getAddresses() {
         $dbh = Conexion::getConexionPDO();
