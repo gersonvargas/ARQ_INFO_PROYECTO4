@@ -2,11 +2,11 @@
 include_once("Customer.php");
 
 
-if (isset($_POST['metodo'])) {
-    if ($_POST['metodo'] == 'buscar') {
-        $valor_buscado = $_POST['busqueda'];
+if (isset($_GET['metodo'])) {
+    if ($_GET['metodo'] == 'buscar') {
+        $valor_buscado = $_GET['busqueda'];
         if ($valor_buscado !== '') {
-           $clientes = Customer::getCustomerID($valor_buscado);
+           $clientes = Customer::getCustomerName($valor_buscado);
         } else {
            $clientes = Customer::getCustomers();
         }
@@ -83,7 +83,7 @@ if (isset($_SESSION['error_msg'])) {
             <div class="row">
                 <h3>Listing Customers</h3>
                 <div>                   
-                    <form action='ListCustomer.php' method='POST' class="form-inline my-2 my-md-0">
+                    <form action='ListCustomer.php' method='GET' class="form-inline my-2 my-md-0">
                         <input type="hidden" name="metodo" value="buscar" placeholder="Buscar"/>
                         <input class="form-control" type="text" name="busqueda" placeholder="Buscar archivos"/>
                         <button type="submit" name="submit"><img src="../Images/busqueda.png"></button>
@@ -94,13 +94,13 @@ if (isset($_SESSION['error_msg'])) {
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>[]</th>
+                            
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Adress</th>
                             <th>Detail</th>
-                            <th>Edit</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,15 +112,17 @@ if (isset($_SESSION['error_msg'])) {
                             //var_dump($clientes);
                             foreach ($clientes as $value) {
                                 echo '<tr>';
-                                echo '<td><input type="checkbox" class="form-check-input" value=""></td>';
                                 echo '<td>' . $value['CUSTOMER_ID'] . "</td>";
                                 echo '<td>' . $value['CUSTOMER_NAME'] . "</td>";
                                 echo '<td>' . $value['CUSTOMER_EMAIL'] . "</td>";
                                 echo '<td>' . $value['CUSTOMER_ADDRESS'] . "</td>";
                                 echo '<td>' . $value['OTHER_DETAILS'] . "</td>";
-                                echo '<td> <button type="button" class="btn btn-primary btn-sm">Edit</button> </td>';
+                                echo '<td>'
+                                . '<a class="btn btn-primary btn-sm" href="CustomerForm.php?CUSTOMER_ID='.$value['CUSTOMER_ID'].'">Edit</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?customerId='.$value['CUSTOMER_ID'].'&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
+                            
                         } else {
                             echo '<p class="alert alert-warning"> There are no customers! </p>';
                         }
@@ -139,8 +141,8 @@ if (isset($_SESSION['error_msg'])) {
                 </nav>
             </div>
             <div class="row float-right mr-auto">
-                <button type="button" class="btn btn-danger btn-sm">Delete Selected</button>
-                <button type="button" class="btn btn-success btn-sm">Add New</button>
+                
+                <a href="CustomerForm.php" class="btn btn-success btn-sm">Add New</a>
             </div>
         </main>
 
