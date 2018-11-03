@@ -14,7 +14,7 @@ if (isset($_GET['metodo'])) {
         $clientes = Addreess::getAddresses();
     }
 } else {
-    $clientes = Addreess::getAddresses();
+    $clientes = Addreess::getAddressesRelations();
 }
 
 if (!isset($_SESSION['login'])) {
@@ -81,7 +81,7 @@ if (isset($_SESSION['error_msg'])) {
 
         <main class="container">
             <div class="row">
-                <h3>Listing Adresses</h3>
+                <h3>Listing Adresses Asigned to Customers</h3>
 
             </div>
             <div class="">
@@ -89,14 +89,9 @@ if (isset($_SESSION['error_msg'])) {
                     <thead>
                         <tr>
                             <th data-field="Id" data-sortable="true">Id</th>
-                            <th data-field="line1" data-sortable="true">Line 1</th>
-                            <th data-field="line2" data-sortable="true">Line 2</th>
-                            <th data-field="line3" data-sortable="true">Line 3</th>
-                            <th data-field="city" data-sortable="true">City</th>
-                            <th data-field="Country" data-sortable="true">Country</th>
-                            <th data-field="codepost" data-sortable="true">Post Code</th>
-                            <th data-field="province" data-sortable="true">Province</th>
-                            <th data-field="details" data-sortable="true">Details</th>
+                            <th data-field="line1" data-sortable="true">Customer</th>
+                            <th data-field="line2" data-sortable="true">Address Type</th>
+                            
                             <th>Action</th>
 
                         </tr>
@@ -105,31 +100,17 @@ if (isset($_SESSION['error_msg'])) {
 
                         <?php
                         if (count($clientes) > 0) {
-                            /*
-                             ADDRESS_ID INT PRIMARY KEY,
-   LINE1 VARCHAR(20),
-   LINE2 VARCHAR(20),
-   LINE3 VARCHAR(20),
-   CITY VARCHAR(20),
-   ZIP_POSTCODE VARCHAR(20),
-   STATE_PROVINCE_COUNTRY VARCHAR(20),
-   COUNTRY VARCHAR(20),
-   OTHER_DETAILS VARCHAR(20)*/
+                           
                             //var_dump($clientes);
                             foreach ($clientes as $value) {
                                 echo '<tr>';
                                 echo '<td>' . $value['ADDRESS_ID'] . "</td>";
-                                echo '<td>' . $value['LINE1'] . "</td>";
-                                echo '<td>' . $value['LINE2'] . "</td>";
-                                echo '<td>' . $value['LINE3'] . "</td>";
-                                echo '<td>' . $value['CITY'] . "</td>";
-                                echo '<td>' . $value['COUNTRY'] . "</td>";
-                                echo '<td>' . $value['ZIP_POSTCODE'] . "</td>";
-                                echo '<td>' . $value['STATE_PROVINCE_COUNTRY'] . "</td>";
-                                echo '<td>' . $value['OTHER_DETAILS'] . "</td>";
+                                echo '<td>' . $value['CUSTOMER_NAME'] . "</td>";
+                                echo '<td>' . $value['ADDRESS_TYPE_DESCRIPTION'] . "</td>";
+                               
                                 echo '<td>'
                                 . '<a class="btn btn-primary btn-sm" href="AddressForm.php?ADDRESS_ID=' . $value['ADDRESS_ID'] . '">Edit</a>'
-                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?ADDRESS_ID=' . $value['ADDRESS_ID'] . '&metodo=delete">Delete</a> </td>';
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?R_ID=' . $value['CUSTOMER_ADDRESS_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
                         } else {
@@ -140,11 +121,7 @@ if (isset($_SESSION['error_msg'])) {
                 </table>
 
             </div>
-            <div class="row float-right mr-auto">
-                <a href="AddressRelations.php" class="btn btn-info btn-sm mr-2">See Relations</a>
-                <a href="AddressForm.php" class="btn btn-info btn-sm mr-2">Add Relations</a>
-                <a href="AddressForm.php" class="btn btn-success btn-sm">Add New Address</a>
-            </div>
+           
         </main>
 
         <footer class="footer">
