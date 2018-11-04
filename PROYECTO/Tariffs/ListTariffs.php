@@ -93,7 +93,9 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '<td>' . $value['TARIFF_NAME'] . "</td>";
                                 echo '<td>' . $value['TARIFF_RATE'] . "</td>";
                                 echo '<td>' . $value['TARIFF_DATAILS'] . "</td>";
-                                echo '<td> <button type="button" class="btn btn-primary btn-sm">Edit</button> </td>';
+                                echo '<td>'
+                                . '<a class="btn btn-primary btn-sm" href="TariffForm.php?TARIFF_ID='.$value['TARIFF_ID'].'">Edit</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?TARIFF_ID='.$value['TARIFF_ID'].'&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
                         } else {
@@ -103,9 +105,8 @@ if (isset($_SESSION['error_msg'])) {
                     </tbody>
                 </table>
             </div>
-            <div class="row float-right mr-auto">
-                <button type="button" class="btn btn-danger btn-sm">Delete Selected</button>
-                <button type="button" class="btn btn-success btn-sm">Add New</button>
+            <div class="row float-right mr-auto">                
+                <a href="TariffForm.php" class="btn btn-success btn-sm">Add New</a>
             </div>
         </main>
 
