@@ -31,13 +31,13 @@ if (isset($_GET['CUSTOMER_ID'])) {
                 <div class="collapse navbar-collapse" id="navbarsExample04">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="Index.php">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="../Index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Customer/ListCustomer.php">Customers</a>
+                            <a class="nav-link" href="../Customer/ListCustomer.php">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Address/ListAddress.php">Addresses</a>
+                            <a class="nav-link" href="../Address/ListAddress.php">Addresses</a>
                         </li>
 
                     </ul>

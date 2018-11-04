@@ -44,7 +44,7 @@ if (isset($_SESSION['error_msg'])) {
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Addresses</title>
+        <title>Addresses Relations</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.css" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="../images/mp4.png"/>
@@ -68,7 +68,7 @@ if (isset($_SESSION['error_msg'])) {
                             <a class="nav-link" href="../Customer/ListCustomer.php">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Addresses</a>
+                            <a class="nav-link" href="ListAddress.php">Addresses</a>
                         </li>
 
                     </ul>

@@ -106,15 +106,15 @@ if (isset($_SESSION['error_msg'])) {
                         <?php
                         if (count($clientes) > 0) {
                             /*
-                             ADDRESS_ID INT PRIMARY KEY,
-   LINE1 VARCHAR(20),
-   LINE2 VARCHAR(20),
-   LINE3 VARCHAR(20),
-   CITY VARCHAR(20),
-   ZIP_POSTCODE VARCHAR(20),
-   STATE_PROVINCE_COUNTRY VARCHAR(20),
-   COUNTRY VARCHAR(20),
-   OTHER_DETAILS VARCHAR(20)*/
+                              ADDRESS_ID INT PRIMARY KEY,
+                              LINE1 VARCHAR(20),
+                              LINE2 VARCHAR(20),
+                              LINE3 VARCHAR(20),
+                              CITY VARCHAR(20),
+                              ZIP_POSTCODE VARCHAR(20),
+                              STATE_PROVINCE_COUNTRY VARCHAR(20),
+                              COUNTRY VARCHAR(20),
+                              OTHER_DETAILS VARCHAR(20) */
                             //var_dump($clientes);
                             foreach ($clientes as $value) {
                                 echo '<tr>';
@@ -129,6 +129,7 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '<td>' . $value['OTHER_DETAILS'] . "</td>";
                                 echo '<td>'
                                 . '<a class="btn btn-primary btn-sm" href="AddressForm.php?ADDRESS_ID=' . $value['ADDRESS_ID'] . '">Edit</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="CustAddressRelationForm.php?ADDRESS_ID=' . $value['ADDRESS_ID'] . '&metodo=delete">Asociate</a> </td>'
                                 . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?ADDRESS_ID=' . $value['ADDRESS_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
@@ -141,8 +142,8 @@ if (isset($_SESSION['error_msg'])) {
 
             </div>
             <div class="row float-right mr-auto">
-                <a href="AddressRelations.php" class="btn btn-info btn-sm mr-2">See Relations</a>
-                <a href="AddressForm.php" class="btn btn-info btn-sm mr-2">Add Relations</a>
+                <a href="AddressRelations.php" class="btn btn-info btn-sm mr-2">See All Relations</a>
+
                 <a href="AddressForm.php" class="btn btn-success btn-sm">Add New Address</a>
             </div>
         </main>

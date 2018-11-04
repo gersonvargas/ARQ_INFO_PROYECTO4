@@ -6,12 +6,12 @@ if (isset($_GET['metodo'])) {
     if ($_GET['metodo'] == 'buscar') {
         $valor_buscado = $_GET['busqueda'];
         if ($valor_buscado !== '') {
-           $clientes = Customer::getCustomerName($valor_buscado);
+            $clientes = Customer::getCustomerName($valor_buscado);
         } else {
-           $clientes = Customer::getCustomers();
+            $clientes = Customer::getCustomers();
         }
     } else {
-       $clientes = Customer::getCustomers();
+        $clientes = Customer::getCustomers();
     }
 } else {
     $clientes = Customer::getCustomers();
@@ -39,7 +39,7 @@ if (isset($_SESSION['error_msg'])) {
 
 <!doctype html>
 <html lang="en">
-   <head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -82,19 +82,19 @@ if (isset($_SESSION['error_msg'])) {
         <main class="container">
             <div class="row">
                 <h3>Listing Customers</h3>
-               
+
             </div>
             <div class="">
                 <table data-toggle="table" id="tableCustomers" class="table table-hover">
                     <thead>
                         <tr>
-                             <th data-field="Id" data-sortable="true">Id</th>
+                            <th data-field="Id" data-sortable="true">Id</th>
                             <th data-field="Type" data-sortable="true">Name</th>
                             <th data-field="Name" data-sortable="true">Email</th>
                             <th data-field="Rate" data-sortable="true">Address</th>
                             <th data-field="Detail" data-sortable="true">Detail</th>
-                            <th>Action</th>
-                                                        
+                            <th>Actions</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -112,21 +112,21 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '<td>' . $value['CUSTOMER_ADDRESS'] . "</td>";
                                 echo '<td>' . $value['OTHER_DETAILS'] . "</td>";
                                 echo '<td>'
-                                . '<a class="btn btn-primary btn-sm" href="CustomerForm.php?CUSTOMER_ID='.$value['CUSTOMER_ID'].'">Edit</a>'
-                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?customerId='.$value['CUSTOMER_ID'].'&metodo=delete">Delete</a> </td>';
+                                . '<a class="btn btn-primary btn-sm" href="CustomerForm.php?CUSTOMER_ID=' . $value['CUSTOMER_ID'] . '">Edit</a>'
+                                . '<b> | </b><a class="btn btn-info btn-sm" href="../Address/CustAddressRelationForm.php?CUSTOMER_ID=' . $value['CUSTOMER_ID'] . '">Add Address</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?customerId=' . $value['CUSTOMER_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
-                            
                         } else {
                             echo '<p class="alert alert-warning"> There are no customers! </p>';
                         }
                         ?>
                     </tbody>
                 </table>
-               
+
             </div>
             <div class="row float-right mr-auto">
-                
+
                 <a href="CustomerForm.php" class="btn btn-success btn-sm">Add New</a>
             </div>
         </main>
@@ -136,13 +136,13 @@ if (isset($_SESSION['error_msg'])) {
                 <span class="text-muted">Place sticky footer content here.</span>
             </div>
         </footer>
-         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			    crossorigin="anonymous"></script>           
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>           
         <script src="../js/Customers/Customers.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.js"></script> 
-  
-       
+
+
     </body>
 </html>
 

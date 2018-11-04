@@ -86,7 +86,29 @@ class Addreess {
         }
     }
 
-    public static function updateAddress($A_ID,$A_LINE1, $A_LINE2, $A_LINE3, $A_CITY, $A_COUNTRY, $A_ZIP_CODE, $A_PROVINCE, $A_DETAILS) {
+    public static function insertRelation($A_ADDRESS_ID, $A_ADDRESS_TYPE_CODE, $A_CUSTOMER_ID, $A_DATE_ADDRESS_FROM, $A_DATE_ADDRESS_TO) {
+        $file_db = Conexion::getConexionPDO();
+  //echo $A_ADDRESS_ID.$A_ADDRESS_TYPE_CODE.$A_CUSTOMER_ID.$A_DATE_ADDRESS_FROM.$A_DATE_ADDRESS_TO;
+        try {
+            $insert2 = "insert into PHONEBILL.CUSTOMER_ADDRESSES " .
+                    "(`ADDRESS_ID`,`ADDRESS_TYPE_CODE`,`CUSTOMER_ID`,`DATE_ADDRESS_FROM`,`DATE_ADDRESS_TO`)".
+               " VALUES (:ADDRESS_ID, :ADDRESS_TYPE_CODE, :CUSTOMER_ID, :DATE_ADDRESS_FROM, :DATE_ADDRESS_TO)";
+            $stmt2 = $file_db->prepare($insert2);
+            $stmt2->bindParam(':ADDRESS_ID', $A_ADDRESS_ID);
+            $stmt2->bindParam(':ADDRESS_TYPE_CODE', $A_ADDRESS_TYPE_CODE);
+            $stmt2->bindParam(':CUSTOMER_ID', $A_CUSTOMER_ID);
+            $stmt2->bindParam(':DATE_ADDRESS_FROM', $A_DATE_ADDRESS_FROM);
+            $stmt2->bindParam(':DATE_ADDRESS_TO', $A_DATE_ADDRESS_TO);
+            $stmt2->execute();
+            header("Location: AddressRelations.php");
+        } catch (Exception $e) {
+            return App::error($e->getMessage());
+        } finally {
+            
+        }
+    }
+
+    public static function updateAddress($A_ID, $A_LINE1, $A_LINE2, $A_LINE3, $A_CITY, $A_COUNTRY, $A_ZIP_CODE, $A_PROVINCE, $A_DETAILS) {
 
         $file_db = Conexion::getConexionPDO();
         try {
@@ -94,7 +116,7 @@ class Addreess {
                     "`LINE1` = :LINE1,`LINE2` = :LINE2,`LINE3` = :LINE3," .
                     "`CITY` = :CITY,`ZIP_POSTCODE`= :ZIP_POSTCODE,`STATE_PROVINCE_COUNTRY`= :STATE_PROVINCE_COUNTRY,`COUNTRY`= :COUNTRY,`OTHER_DETAILS`= :OTHER_DETAILS" .
                     " WHERE ADDRESS_ID = :ADDRESS_ID";
-           $stmt2 = $file_db->prepare($insert2);
+            $stmt2 = $file_db->prepare($insert2);
             $stmt2->bindParam(':LINE1', $A_LINE1);
             $stmt2->bindParam(':LINE2', $A_LINE2);
             $stmt2->bindParam(':LINE3', $A_LINE3);
@@ -109,6 +131,7 @@ class Addreess {
         } catch (Exception $e) {
             return App::error($e->getMessage());
         } finally {
+            
         }
     }
 
@@ -127,8 +150,8 @@ class Addreess {
             
         }
     }
-    
-       public static function deleteRelationAddress($R_ID) {
+
+    public static function deleteRelationAddress($R_ID) {
 
         $file_db = Conexion::getConexionPDO();
         try {
