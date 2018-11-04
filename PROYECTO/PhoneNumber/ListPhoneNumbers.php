@@ -5,12 +5,12 @@ if (isset($_GET['metodo'])) {
     if ($_GET['metodo'] == 'buscar') {
         $valor_buscado = $_GET['busqueda'];
         if ($valor_buscado !== '') {
-            $clientes = Customer::getCustomerName($valor_buscado);
+            $clientes = PhoneNumber::getPhoneNumberID($valor_buscado);
         } else {
-            $clientes = Customer::getCustomers();
+            $clientes = PhoneNumber::getPhoneNumbers();
         }
     } else {
-        $clientes = Customer::getCustomers();
+        $clientes = PhoneNumber::getPhoneNumbers();
     }
 } else {
     $clientes = PhoneNumber::getPhoneNumbers();
@@ -69,7 +69,7 @@ if (isset($_SESSION['error_msg'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="../Address/ListAddress.php">Addresses</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="../Address/ListAddress.php">Phone Numbers</a>
                         </li>
 
@@ -116,9 +116,10 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '<td>' . $value['HELD_TO_DATE'] . "</td>";
                                 echo '<td>' . $value['OTHER_DETAILS'] . "</td>";
                                 echo '<td>'
-                                . '<a class="btn btn-primary btn-sm" href="CustomerForm.php?CUSTOMER_ID=' . $value['CUSTOMER_ID'] . '">Edit</a>'
-                                . '<b> | </b><a class="btn btn-info btn-sm" href="../Address/CustAddressRelationForm.php?CUSTOMER_ID=' . $value['CUSTOMER_ID'] . '">Add Address</a>'
-                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?customerId=' . $value['CUSTOMER_ID'] . '&metodo=delete">Delete</a> </td>';
+                                . '<a class="btn btn-primary btn-sm" href="PhoneNumberForm.php?CUSTOMER_PHONE_NUMBER='
+                                . $value['CUSTOMER_PHONE_NUMBER'] . '">Edit</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?CUSTOMER_PHONE_NUMBER=' .
+                                $value['CUSTOMER_PHONE_NUMBER'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
                         } else {
@@ -131,7 +132,7 @@ if (isset($_SESSION['error_msg'])) {
             </div>
             <div class="row float-right mr-auto">
 
-                <a href="CustomerForm.php" class="btn btn-success btn-sm">Add New</a>
+                <a href="PhoneNumberForm.php" class="btn btn-success btn-sm">Add New</a>
             </div>
         </main>
 

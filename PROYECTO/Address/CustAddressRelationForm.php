@@ -125,7 +125,7 @@ if (isset($_GET['ADDRESS_ID'])) {
                                         echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                                         echo "<label for='inputUserId'><strong>Date To</strong></label>";
                                         echo " <input class='form-control' type='date' name='DATE_ADDRESS_TO' id='inputUserId'" .
-                                        " placeholder='Customer />";
+                                        " placeholder='Customer' />";
                                         echo "</div>";
                                   
                                     ?>
