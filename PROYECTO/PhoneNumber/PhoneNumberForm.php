@@ -41,9 +41,7 @@ if (isset($_GET['CUSTOMER_PHONE_NUMBER'])) {
                         </li>
 
                     </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
+                   
                 </div>
             </nav>
         </div>
