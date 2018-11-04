@@ -56,6 +56,9 @@ if (isset($_SESSION['error_msg'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="Tariffs/ListTariffs.php">Tariffs</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PhoneNumber/ListPhoneNumbers.php">Phone Numbers</a>
+                        </li>
                     </ul>
                     <form class="form-inline my-2 my-md-0">
                         <input class="form-control" type="text" placeholder="Search">
