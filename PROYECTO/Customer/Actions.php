@@ -10,7 +10,6 @@ if (isset($_POST['customerId']) && isset($_POST['customerName'])) {
     $C_TYPE = $_POST['customerType'];
     $C_DETAILS = $_POST['customerDetails'];
     $C_DIRECTION = $_POST['customerDirection'];
-    //var_dump($_POST);
     if (isset($_POST['metodo']) && $_POST['metodo'] == 'agregar') {
         echo Customer::insertCustomer($C_ID,$C_NAME,$C_EMAIL,$C_TYPE,$C_DIRECTION,$C_DETAILS);
         
