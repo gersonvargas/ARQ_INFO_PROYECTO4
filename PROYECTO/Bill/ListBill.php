@@ -28,7 +28,7 @@ if (isset($_SESSION['error_msg'])) {
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Tariffs</title>
+        <title>Bill</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.css" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="../images/mp4.png"/>
@@ -55,7 +55,10 @@ if (isset($_SESSION['error_msg'])) {
                             <a class="nav-link" href="#">Addresses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ListTariffs.php">Tariffs</a>
+                            <a class="nav-link" href="../Tariffs/ListTariffs.php">Tariffs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../PhoneNumber/ListPhoneNumbers.php">Phone Numbers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="ListBill.php">Bills</a>
@@ -100,7 +103,7 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '<td>'
                                 . '<a class="btn btn-primary btn-sm" href="BillForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Edit</a>'
                                 . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Add Detail</a>'
-                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?customerId=' . $value['BILL_HEADER_ID'] . '&metodo=delete">Delete</a> </td>';
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
                         } else {

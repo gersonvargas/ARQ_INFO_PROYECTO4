@@ -59,7 +59,10 @@ if (isset($_SESSION['error_msg'])) {
                             <a class="nav-link" href="ListTariffs.php">Tariffs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ListBill.php">Bills</a>
+                            <a class="nav-link" href="../PhoneNumber/ListPhoneNumbers.php">Phone Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Bill/ListBill.php">Bills</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-md-0">
