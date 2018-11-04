@@ -1,6 +1,6 @@
 <?php
-include_once("Tariff.php");
-$tariffs = Tariff::getTariffs();
+include_once("Bill.php");
+$Bills = Bill::getBills();
 
 if (!isset($_SESSION['login'])) {
     // header("Location: " . "../index.php");
@@ -19,7 +19,6 @@ if (isset($_SESSION['error_msg'])) {
     $_SESSION['error_msg'] = NULL;
 }
 
-//$name = $_SESSION['username'];
 ?>
 
 <!doctype html>
@@ -74,42 +73,45 @@ if (isset($_SESSION['error_msg'])) {
                 <h3>Listing Tariffs</h3>
             </div>
             <div >
-                <table data-toggle="table" id="tableTariffs" class="table table-hover">
+                <table data-toggle="table" id="tableBills" class="table table-hover">
                     <thead>
                         <tr>
                             <th data-field="Id" data-sortable="true">Id</th>
-                            <th data-field="Type" data-sortable="true">Type</th>
-                            <th data-field="Name" data-sortable="true">Name</th>
-                            <th data-field="Rate" data-sortable="true">Rate</th>
-                            <th data-field="Detail" data-sortable="true">Detail</th>
-                            <th>Actions</th>
+                            <th data-field="PhoneNumber" data-sortable="true">Phone number</th>
+                            <th data-field="BillIssuedDate" data-sortable="true">Bill issued date</th>
+                            <th data-field="PaymentDueDate" data-sortable="true">Payment due date</th>
+                            <th data-field="OriginalAmountDue" data-sortable="true">Original amount due</th>
+                            <th data-field="AmountOutstanding" data-sortable="true">Amount outstanding</th>
+                            <th>Actions</th>                       
                         </tr>
                     </thead>
                     <tbody>
                         <?php                        
-                        if (count($tariffs) > 0) {
+                        if (count($Bills) > 0) {
                             //var_dump($clientes);
-                            foreach ($tariffs as $value) {
+                            foreach ($Bills as $value) {
                                 echo '<tr>';
-                                echo '<td>' . $value['TARIFF_ID'] . "</td>";
-                                echo '<td>' . $value['TARIFF_TYPE_DESCRIPTION'] . "</td>";
-                                echo '<td>' . $value['TARIFF_NAME'] . "</td>";
-                                echo '<td>' . $value['TARIFF_RATE'] . "</td>";
-                                echo '<td>' . $value['TARIFF_DATAILS'] . "</td>";
+                                echo '<td>' . $value['BILL_HEADER_ID'] . "</td>";
+                                echo '<td>' . $value['CUSTOMER_PHONE_NUMBER'] . "</td>";
+                                echo '<td>' . $value['BILL_ISSUE_DATE'] . "</td>";
+                                echo '<td>' . $value['PAYMENT_DUE_DATE'] . "</td>";
+                                echo '<td>' . $value['ORIGINAL_AMOUNT_DUE'] . "</td>";
+                                echo '<td>' . $value['AMOUNT_OUTSTANDING'] . "</td>";
                                 echo '<td>'
-                                . '<a class="btn btn-primary btn-sm" href="TariffForm.php?TARIFF_ID='.$value['TARIFF_ID'].'">Edit</a>'
-                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?TARIFF_ID='.$value['TARIFF_ID'].'&metodo=delete">Delete</a> </td>';
+                                . '<a class="btn btn-primary btn-sm" href="BillForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Edit</a>'
+                                . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Add Detail</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?customerId=' . $value['BILL_HEADER_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
                         } else {
-                            echo '<p class="alert alert-warning"> There are no tariffs! </p>';
+                            echo '<p class="alert alert-warning"> There are no Bills! </p>';
                         }
                         ?>
                     </tbody>
                 </table>
             </div>
             <div class="row float-right mr-auto">                
-                <a href="TariffForm.php" class="btn btn-success btn-sm">Add New</a>
+                <a href="BillForm.php" class="btn btn-success btn-sm">Add New</a>
             </div>
         </main>
 
@@ -120,7 +122,7 @@ if (isset($_SESSION['error_msg'])) {
         </footer>  
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 			    crossorigin="anonymous"></script>           
-        <script src="../js/Tariffs/Tariff.js" type="text/javascript"></script>
+        <script src="../js/Bill/Bill.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.js"></script> 
     </body>
