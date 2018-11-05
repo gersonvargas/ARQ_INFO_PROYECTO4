@@ -43,7 +43,7 @@ if (isset($_GET['BILL_HEADER_ID'])) {
                             <a class="nav-link" href="Tariffs/ListTariffs.php">Tariffs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Tariffs/ListBill.php">Bills</a>
+                            <a class="nav-link" href="ListBill.php">Bills</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-md-0">

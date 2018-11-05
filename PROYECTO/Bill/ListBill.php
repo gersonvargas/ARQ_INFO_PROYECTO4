@@ -102,7 +102,7 @@ if (isset($_SESSION['error_msg'])) {
                                 echo '<td>' . $value['AMOUNT_OUTSTANDING'] . "</td>";
                                 echo '<td>'
                                 . '<a class="btn btn-primary btn-sm" href="BillForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Edit</a>'
-                                . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php">Add Detail</a>'
+                                . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php?BILL_HEADER_ID='.$value['BILL_HEADER_ID'] . '">Add Detail</a>'
                                 . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }

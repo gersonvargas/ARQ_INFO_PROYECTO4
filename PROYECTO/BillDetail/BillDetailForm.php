@@ -43,7 +43,7 @@ if (isset($_GET['BILL_DETAIL_LINE_ID'])) {
                             <a class="nav-link" href="Tariffs/ListTariffs.php">Tariffs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Tariffs/ListBill.php">Bills</a>
+                            <a class="nav-link" href="../Bill/ListBill.php">Bills</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-md-0">
@@ -97,7 +97,7 @@ if (isset($_GET['BILL_DETAIL_LINE_ID'])) {
                                         echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                                         echo "<label for='billId'><strong>Bill id</strong></label>";
                                         echo " <input class='form-control' type='text' name='billId' id='inputBillId'" .
-                                        " placeholder='Bill id' />";
+                                        " placeholder='Bill id' value='" .$_GET['BILL_HEADER_ID']."' readonly />";
                                         echo "</div>";
                                     }
                                     ?>

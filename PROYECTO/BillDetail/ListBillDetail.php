@@ -1,7 +1,6 @@
 <?php
 include_once("BillDetail.php");
-$Bills = Bill::getBills();
-
+$Bills = BillDetail::getBills($_GET['BILL_HEADER_ID']);
 if (!isset($_SESSION['login'])) {
     // header("Location: " . "../index.php");
     // exit();
@@ -61,7 +60,7 @@ if (isset($_SESSION['error_msg'])) {
                             <a class="nav-link" href="../PhoneNumber/ListPhoneNumbers.php">Phone Numbers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ListBill.php">Bills</a>
+                            <a class="nav-link" href="../Bill/ListBill.php">Bills</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-md-0">
@@ -91,19 +90,18 @@ if (isset($_SESSION['error_msg'])) {
                     <tbody>
                         <?php                        
                         if (count($Bills) > 0) {
-                            //var_dump($clientes);
+                            //var_dump($Bills);
                             foreach ($Bills as $value) {
                                 echo '<tr>';
                                 echo '<td>' . $value['BILL_DETAIL_LINE_ID'] . "</td>";
                                 echo '<td>' . $value['BILL_HEADER_ID'] . "</td>";
-                                echo '<td>' . $value['PHONE_CALL_ID'] . "</td>";
+                                echo '<td>' . $value['CUSTOMER_PHONE_NUMBER'] . "</td>";
                                 echo '<td>' . $value['TARIFF_NAME'] . "</td>";
                                 echo '<td>' . $value['CALL_DURATION'] . "</td>";
                                 echo '<td>' . $value['CALL_COST'] . "</td>";
                                 echo '<td>'
-                                . '<a class="btn btn-primary btn-sm" href="BillForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Edit</a>'
-                                . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Add Detail</a>'
-                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '&metodo=delete">Delete</a> </td>';
+                                . '<a class="btn btn-primary btn-sm" href="BillDetailForm.php?BILL_DETAIL_LINE_ID=' . $value['BILL_DETAIL_LINE_ID'] . '">Edit</a>'
+                                . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?BILL_DETAIL_LINE_ID=' . $value['BILL_DETAIL_LINE_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
                         } else {
@@ -113,8 +111,10 @@ if (isset($_SESSION['error_msg'])) {
                     </tbody>
                 </table>
             </div>
-            <div class="row float-right mr-auto">                
-                <a href="BillForm.php" class="btn btn-success btn-sm">Add New</a>
+            <div class="row float-right mr-auto"> 
+            <?php                    
+                echo '<a href="BillDetailForm.php?BILL_HEADER_ID='.$value['BILL_HEADER_ID'] . '" class="btn btn-success btn-sm">Add New</a>'
+            ?> 
             </div>
         </main>
 
