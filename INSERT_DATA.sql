@@ -78,7 +78,8 @@ INSERT INTO customer_phone_numbers(CUSTOMER_PHONE_NUMBER,CUSTOMER_ID,NUMBER_TYPE
 /* bill_headers */
 INSERT INTO bill_headers(BILL_HEADER_ID,PHONE_NUMBER,BILL_ISSUE_DATE,PAYMENT_DUE_DATE,ORIGINAL_AMOUNT_DUE,AMOUNT_OUTSTANDING) VALUES(1,88996655,CURDATE(),CURDATE(),2,4)
 
-
+/* bill_detail_lines */
+insert into bill_detail_lines(BILL_DETAIL_LINE_ID,BILL_HEADER_ID,PHONE_CALL_ID,TARIFF_ID,CALL_DURATION,CALL_COST)VALUES(1,1,1,2,50,5)
 
 INSERT INTO PHONEBILL.REF_NUMBER_CALLED_TYPE VALUES(
    1,
@@ -100,3 +101,19 @@ INSERT INTO PHONEBILL.CUSTOMER_PHONE_CALLS VALUES (
 
 commit;
  --- END ---
+
+SELECT   BillDetail.BILL_DETAIL_LINE_ID,
+	     Bill.BILL_HEADER_ID,
+         PhoneNumber.CUSTOMER_PHONE_NUMBER,
+         Tariff.TARIFF_ID,
+         Tariff.TARIFF_NAME,
+         BillDetail.CALL_DURATION,
+         BillDetail.CALL_COST
+		 FROM bill_detail_lines BillDetail 
+         INNER JOIN bill_headers Bill
+         	ON BillDetail.BILL_HEADER_ID = Bill.BILL_HEADER_ID
+         INNER JOIN customer_phone_numbers PhoneNumber 
+            ON Bill.PHONE_NUMBER = PhoneNumber.CUSTOMER_PHONE_NUMBER
+         INNER JOIN tariffs Tariff 
+            ON BillDetail.TARIFF_ID = Tariff.TARIFF_ID
+WHERE BILL_DETAIL_LINE_ID = 1

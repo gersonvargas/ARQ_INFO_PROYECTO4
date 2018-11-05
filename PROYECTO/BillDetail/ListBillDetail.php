@@ -1,5 +1,5 @@
 <?php
-include_once("Bill.php");
+include_once("BillDetail.php");
 $Bills = Bill::getBills();
 
 if (!isset($_SESSION['login'])) {
@@ -28,7 +28,7 @@ if (isset($_SESSION['error_msg'])) {
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Bill</title>
+        <title>Bill detail</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.css" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="../images/mp4.png"/>
@@ -76,15 +76,15 @@ if (isset($_SESSION['error_msg'])) {
                 <h3>Listing Tariffs</h3>
             </div>
             <div >
-                <table data-toggle="table" id="tableBills" class="table table-hover">
+                <table data-toggle="table" id="tableBillDetails" class="table table-hover">
                     <thead>
                         <tr>
                             <th data-field="Id" data-sortable="true">Id</th>
-                            <th data-field="PhoneNumber" data-sortable="true">Phone number</th>
-                            <th data-field="BillIssuedDate" data-sortable="true">Bill issued date</th>
-                            <th data-field="PaymentDueDate" data-sortable="true">Payment due date</th>
-                            <th data-field="OriginalAmountDue" data-sortable="true">Original amount due</th>
-                            <th data-field="AmountOutstanding" data-sortable="true">Amount outstanding</th>
+                            <th data-field="BillId" data-sortable="true">Bill id</th>
+                            <th data-field="PhoneCall" data-sortable="true">Phone call</th>
+                            <th data-field="Tariff" data-sortable="true">Tariff</th>
+                            <th data-field="CallDuration" data-sortable="true">Call duration</th>
+                            <th data-field="CallCost" data-sortable="true">Call cost</th>
                             <th>Actions</th>                       
                         </tr>
                     </thead>
@@ -94,15 +94,15 @@ if (isset($_SESSION['error_msg'])) {
                             //var_dump($clientes);
                             foreach ($Bills as $value) {
                                 echo '<tr>';
+                                echo '<td>' . $value['BILL_DETAIL_LINE_ID'] . "</td>";
                                 echo '<td>' . $value['BILL_HEADER_ID'] . "</td>";
-                                echo '<td>' . $value['CUSTOMER_PHONE_NUMBER'] . "</td>";
-                                echo '<td>' . $value['BILL_ISSUE_DATE'] . "</td>";
-                                echo '<td>' . $value['PAYMENT_DUE_DATE'] . "</td>";
-                                echo '<td>' . $value['ORIGINAL_AMOUNT_DUE'] . "</td>";
-                                echo '<td>' . $value['AMOUNT_OUTSTANDING'] . "</td>";
+                                echo '<td>' . $value['PHONE_CALL_ID'] . "</td>";
+                                echo '<td>' . $value['TARIFF_NAME'] . "</td>";
+                                echo '<td>' . $value['CALL_DURATION'] . "</td>";
+                                echo '<td>' . $value['CALL_COST'] . "</td>";
                                 echo '<td>'
                                 . '<a class="btn btn-primary btn-sm" href="BillForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Edit</a>'
-                                . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php">Add Detail</a>'
+                                . '<b> | </b><a class="btn btn-info btn-sm" href="../BillDetail/BillDetailForm.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '">Add Detail</a>'
                                 . '<b> | </b><a class="btn btn-danger btn-sm" href="Actions.php?BILL_HEADER_ID=' . $value['BILL_HEADER_ID'] . '&metodo=delete">Delete</a> </td>';
                                 echo '</tr>';
                             }
