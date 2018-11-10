@@ -21,37 +21,45 @@ if (isset($_GET['BILL_HEADER_ID'])) {
     </head>
     <body>
 
-        <div class="topnav">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Tariff</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <header>
+            <div class="topnav">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Customer Phone Bill</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="Index.php">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Customer/ListCustomer.php">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Address/ListAddress.php">Addresses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Tariffs/ListTariffs.php">Tariffs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="ListBill.php">Bills</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
-                </div>
-            </nav>
-        </div>
+                    <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="../Index.php">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Customer/ListCustomer.php">Customers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Address/ListAddress.php">Addresses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Tariffs/ListTariffs.php">Tariffs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../PhoneNumber/ListPhoneNumbers.php">Phone Numbers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../PhoneCalls/ListPhoneCalls.php">Phone Calls</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Bill/ListBill.php">Bills</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-md-0">
+                            <input class="form-control" type="text" placeholder="Search">
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </header>
         <main class="centrar_main">
             <div class='row justify-content-center'>
                 <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
@@ -82,7 +90,7 @@ if (isset($_GET['BILL_HEADER_ID'])) {
                                         echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                                         echo "<label for='inputTariffId'><strong>Bill phone number</strong></label>";
                                         echo '<select class="custom-select my-1 mr-sm-2" id="selectBillPhoneNumber" name="billPhoneNumber">';
-                                       
+
                                         if ($cust[0]['PHONE_NUMBER'] == '33667755') {
                                             echo '<option value="33667755" selected>33667755</option>';
                                             echo '<option value="88996655">88996655</option>';
@@ -90,11 +98,10 @@ if (isset($_GET['BILL_HEADER_ID'])) {
                                             echo '<option value="33667755">33667755</option>';
                                             echo '<option value="88996655" selected>88996655</option>';
                                         }
-                                        
+
                                         echo '</select>';
 
                                         echo "</div>";
-
                                     } else {
                                         echo'<input type="hidden" name="metodo" value="agregar"/>';
 
@@ -130,8 +137,7 @@ if (isset($_GET['BILL_HEADER_ID'])) {
                                         echo " <input class='form-control' type='date' name='paymentDueDate' id='inputPaymentDueDate'" .
                                         " placeholder='Payment due date' value='" . $cust[0]['PAYMENT_DUE_DATE'] . "'  />";
                                         echo "</div>";
-
-                                    } else {        
+                                    } else {
                                         echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
                                         echo "<label for='billIssuedDate'><strong>Bill issued date</strong></label>";
                                         echo " <input class='form-control' type='date' name='billIssuedDate' id='inputBillIssuedDate'" .
@@ -151,34 +157,33 @@ if (isset($_GET['BILL_HEADER_ID'])) {
 
                                 <div class='row'>
 
-                                    <?php
-                                    if (isset($_GET['BILL_HEADER_ID'])) {
-                                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                        echo "<label for='originalAmountDue'><strong>Original amount due</strong></label>";
-                                        echo " <input class='form-control' type='text' name='originalAmountDue' id='inputOriginalAmountDue'" .
-                                        " placeholder='Original amount due' value='" . $cust[0]['ORIGINAL_AMOUNT_DUE'] . "'/>";
-                                        echo "</div>";
+<?php
+if (isset($_GET['BILL_HEADER_ID'])) {
+    echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+    echo "<label for='originalAmountDue'><strong>Original amount due</strong></label>";
+    echo " <input class='form-control' type='text' name='originalAmountDue' id='inputOriginalAmountDue'" .
+    " placeholder='Original amount due' value='" . $cust[0]['ORIGINAL_AMOUNT_DUE'] . "'/>";
+    echo "</div>";
 
-                                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                        echo "<label for='tariffId'><strong>Amount outstanding</strong></label>";
-                                        echo " <input class='form-control' type='text' name='amountOutstanding' id='inputAmountOutstanding'" .
-                                        " placeholder='Amount outstanding' value='" . $cust[0]['AMOUNT_OUTSTANDING'] . "'/>";
-                                        echo "</div>";
+    echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+    echo "<label for='tariffId'><strong>Amount outstanding</strong></label>";
+    echo " <input class='form-control' type='text' name='amountOutstanding' id='inputAmountOutstanding'" .
+    " placeholder='Amount outstanding' value='" . $cust[0]['AMOUNT_OUTSTANDING'] . "'/>";
+    echo "</div>";
+} else {
+    echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+    echo "<label for='originalAmountDue'><strong>Original amount due</strong></label>";
+    echo " <input class='form-control' type='text' name='originalAmountDue' id='inputOriginalAmountDue'" .
+    " placeholder='Original amount due'/>";
+    echo "</div>";
 
-                                    } else {
-                                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                        echo "<label for='originalAmountDue'><strong>Original amount due</strong></label>";
-                                        echo " <input class='form-control' type='text' name='originalAmountDue' id='inputOriginalAmountDue'" .
-                                        " placeholder='Original amount due'/>";
-                                        echo "</div>";
-
-                                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                        echo "<label for='tariffId'><strong>Amount outstanding</strong></label>";
-                                        echo " <input class='form-control' type='text' name='amountOutstanding' id='inputAmountOutstanding'" .
-                                        " placeholder='Amount outstanding'/>";
-                                        echo "</div>";
-                                    }
-                                    ?>
+    echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+    echo "<label for='tariffId'><strong>Amount outstanding</strong></label>";
+    echo " <input class='form-control' type='text' name='amountOutstanding' id='inputAmountOutstanding'" .
+    " placeholder='Amount outstanding'/>";
+    echo "</div>";
+}
+?>
 
                                 </div>  
 

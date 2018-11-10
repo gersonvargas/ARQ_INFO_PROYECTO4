@@ -7,7 +7,6 @@ if (isset($_GET['ADDRESS_ID'])) {
     $ADDRESSES = Addreess::getAddressID($ADDRESS_ID);
     // var_dump($cust);
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,32 +23,45 @@ if (isset($_GET['ADDRESS_ID'])) {
     </head>
     <body>
 
-        <div class="topnav">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Customer Phone Bill</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <header>
+            <div class="topnav">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Customer Phone Bill</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="../Index.php">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Customer/ListCustomer.php">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Address/ListAddress.php">Addresses</a>
-                        </li>
-
-                    </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
-                </div>
-            </nav>
-        </div>
+                    <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="../Index.php">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Customer/ListCustomer.php">Customers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Address/ListAddress.php">Addresses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Tariffs/ListTariffs.php">Tariffs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../PhoneNumber/ListPhoneNumbers.php">Phone Numbers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../PhoneCalls/ListPhoneCalls.php">Phone Calls</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Bill/ListBill.php">Bills</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-md-0">
+                            <input class="form-control" type="text" placeholder="Search">
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </header>
         <main class="centrar_main">
             <div class='row justify-content-center'>
                 <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
@@ -76,58 +88,54 @@ if (isset($_GET['ADDRESS_ID'])) {
                                 </legend>
                                 <div class='row'>
                                     <?php
-                                    
-                                        echo'<input type="hidden" name="metodo" value="agregarRelacion"/>';
+                                    echo'<input type="hidden" name="metodo" value="agregarRelacion"/>';
 
-                                        echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
-                                        echo "<label for='inputUserId'><strong>Address ID</strong></label>";
-                                        if (isset($_GET['ADDRESS_ID'])) {
+                                    echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
+                                    echo "<label for='inputUserId'><strong>Address ID</strong></label>";
+                                    if (isset($_GET['ADDRESS_ID'])) {
                                         echo " <input class='form-control' type='text' name='ADDRESS_ID' id='inputUserId'" .
                                         " placeholder='Address ID' readonly value='" . $ADDRESSES[0]['ADDRESS_ID'] . "' />";
-                                        }else{
-                                             echo " <input class='form-control' type='text' name='ADDRESS_ID' id='inputUserId'" .
+                                    } else {
+                                        echo " <input class='form-control' type='text' name='ADDRESS_ID' id='inputUserId'" .
                                         " placeholder='Address ID' />";
-                                        }
-                                        
-                                        echo "</div>";
+                                    }
 
-                                        echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
-                                        echo "<label for='inputUserId'><strong>ADDRESS TYPE CODE</strong></label>";
-                                        //COMMERCIAL_OR_DOMAESTIC                                     
-                                        echo '<select name="ADDRESS_TYPE_CODE" class="custom-select my-1 mr-sm-2" id="customerType">';
-                                        echo '<option selected>Choose...</option>';
-                                        echo '<option value="1">COMMERCIAL</option>';
-                                        echo '<option value="2">DOMESTIC</option>';
-                                        echo '</select>';
-                                        echo "</div>";
+                                    echo "</div>";
 
-                                        echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
-                                        echo "<label for='inputUserId'><strong>Customer ID</strong></label>";
-                                        if(isset($_GET['CUSTOMER_ID'])){
+                                    echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
+                                    echo "<label for='inputUserId'><strong>ADDRESS TYPE CODE</strong></label>";
+                                    //COMMERCIAL_OR_DOMAESTIC                                     
+                                    echo '<select name="ADDRESS_TYPE_CODE" class="custom-select my-1 mr-sm-2" id="customerType">';
+                                    echo '<option selected>Choose...</option>';
+                                    echo '<option value="1">COMMERCIAL</option>';
+                                    echo '<option value="2">DOMESTIC</option>';
+                                    echo '</select>';
+                                    echo "</div>";
+
+                                    echo "<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>";
+                                    echo "<label for='inputUserId'><strong>Customer ID</strong></label>";
+                                    if (isset($_GET['CUSTOMER_ID'])) {
                                         echo " <input class='form-control' type='text' name='CUSTOMER_ID' id='inputUserId'" .
                                         " placeholder='Customer Id' value='" . $_GET['CUSTOMER_ID'] . "'/>";
-                                        }else{
-                                             echo " <input class='form-control' type='text' name='CUSTOMER_ID' id='inputUserId'" .
+                                    } else {
+                                        echo " <input class='form-control' type='text' name='CUSTOMER_ID' id='inputUserId'" .
                                         " placeholder='Customer Id' />";
-                                        }
-                                        echo "</div>";
-                                    
+                                    }
+                                    echo "</div>";
                                     ?>
                                 </div>                            
                                 <div class='row'>
                                     <?php
-                                  
-                                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                        echo "<label for='inputUserId'><strong>Date From</strong></label>";
-                                        echo " <input class='form-control' type='date' name='DATE_ADDRESS_FROM' id='inputUserId'" .
-                                        " placeholder='Address ID' />";
-                                        echo "</div>";
-                                        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
-                                        echo "<label for='inputUserId'><strong>Date To</strong></label>";
-                                        echo " <input class='form-control' type='date' name='DATE_ADDRESS_TO' id='inputUserId'" .
-                                        " placeholder='Customer' />";
-                                        echo "</div>";
-                                  
+                                    echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                    echo "<label for='inputUserId'><strong>Date From</strong></label>";
+                                    echo " <input class='form-control' type='date' name='DATE_ADDRESS_FROM' id='inputUserId'" .
+                                    " placeholder='Address ID' />";
+                                    echo "</div>";
+                                    echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+                                    echo "<label for='inputUserId'><strong>Date To</strong></label>";
+                                    echo " <input class='form-control' type='date' name='DATE_ADDRESS_TO' id='inputUserId'" .
+                                    " placeholder='Customer' />";
+                                    echo "</div>";
                                     ?>
                                 </div>     
 
