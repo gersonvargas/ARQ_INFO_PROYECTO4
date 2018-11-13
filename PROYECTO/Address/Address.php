@@ -27,7 +27,7 @@ class Addreess {
         try {
             $stmt = $dbh->prepare("SELECT customer_addresses.CUSTOMER_ADDRESS_ID,addresses.ADDRESS_ID,customer.CUSTOMER_ID,customer.CUSTOMER_NAME," .
                     "ref_address_type.ADDRESS_TYPE_CODE ,ref_address_type.ADDRESS_TYPE_DESCRIPTION" .
-                    " FROM PHONEBILL.customer_addresses" .
+                    " FROM customer_addresses" .
                     " LEFT JOIN PHONEBILL.addresses ON addresses.ADDRESS_ID = customer_addresses.ADDRESS_ID" .
                     " LEFT JOIN PHONEBILL.customer ON customer.CUSTOMER_ID = customer_addresses.CUSTOMER_ID" .
                     " LEFT JOIN PHONEBILL.ref_address_type ON ref_address_type.ADDRESS_TYPE_CODE = customer_addresses.ADDRESS_TYPE_CODE;");

@@ -72,6 +72,7 @@ class Customer {
             $stmt2->bindParam(':COMMERCIAL_OR_DOMAESTIC', $C_TYPE);
             $stmt2->bindParam(':OTHER_DETAILS', $C_DETAILS);
             $stmt2->execute();
+            
            header("Location: ListCustomer.php?metodo=buscar&busqueda=".$C_NAME);
         } catch (Exception $e) {
             return App::error($e->getMessage());
