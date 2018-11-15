@@ -57,7 +57,7 @@ class BillDetail {
     public static function insertBillDetail($billDetailId,$billId,$phoneCall,$tariff,$callDuration,$callCost) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert = "insert into PHONEBILL.bill_detail_lines(BILL_DETAIL_LINE_ID,BILL_HEADER_ID,PHONE_CALL_ID,TARIFF_ID,CALL_DURATION,CALL_COST)".
+            $insert = "insert into bill_detail_lines(BILL_DETAIL_LINE_ID,BILL_HEADER_ID,PHONE_CALL_ID,TARIFF_ID,CALL_DURATION,CALL_COST)".
                        "VALUES(?,?,?,?,?,?)";
             $stmt = $file_db->prepare($insert);
             $stmt->bindParam(1, $billDetailId, PDO::PARAM_INT); 
@@ -78,7 +78,7 @@ class BillDetail {
     public static function updateBillDetail($billDetailId,$billId,$phoneCall,$tariff,$callDuration,$callCost) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $stmt = $file_db->prepare("UPDATE PHONEBILL.bill_detail_lines ".
+            $stmt = $file_db->prepare("UPDATE bill_detail_lines ".
                                       "SET BILL_HEADER_ID = ?,".
                                       "PHONE_CALL_ID = ?,".
                                       "TARIFF_ID = ?,".
@@ -104,7 +104,7 @@ class BillDetail {
           
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.bill_detail_lines WHERE BILL_DETAIL_LINE_ID=".$Bill_Id;
+            $DELETE = "DELETE FROM bill_detail_lines WHERE BILL_DETAIL_LINE_ID=".$Bill_Id;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
            // var_dump($stmt2->rowCount());

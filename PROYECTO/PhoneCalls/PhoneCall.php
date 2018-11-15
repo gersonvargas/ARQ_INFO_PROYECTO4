@@ -9,7 +9,7 @@ class PhoneCall {
         $dbh = Conexion::getConexionPDO();
         try {
             $stmt = $dbh->prepare("SELECT * "
-                    . " FROM PHONEBILL.CUSTOMER_PHONE_CALLS");
+                    . " FROM CUSTOMER_PHONE_CALLS");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -52,7 +52,7 @@ class PhoneCall {
     public static function insertPhoneCall($PHONE_CALL_ID, $CUSTOMER_PHONE_NUMBER, $NUMBER_CALLED_TYPE_CODE, $NUMBER_CALLED, $CALL_START_DATETIME, $CALL_END_DATETIME, $OTHER_DETAILS) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "insert into PHONEBILL.CUSTOMER_PHONE_CALLS " .
+            $insert2 = "insert into CUSTOMER_PHONE_CALLS " .
                     " VALUES (:PHONE_CALL_ID, :CUSTOMER_PHONE_NUMBER, :NUMBER_CALLED_TYPE_CODE, "
                     . ":NUMBER_CALLED, :CALL_START_DATETIME, :CALL_END_DATETIME,:OTHER_DETAILS)";
             $stmt2 = $file_db->prepare($insert2);
@@ -75,7 +75,7 @@ class PhoneCall {
     public static function updatePhoneCall($PHONE_CALL_ID, $CUSTOMER_PHONE_NUMBER, $NUMBER_CALLED_TYPE_CODE, $NUMBER_CALLED, $CALL_START_DATETIME, $CALL_END_DATETIME, $OTHER_DETAILS) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $UPDATE = "UPDATE  PHONEBILL.CUSTOMER_PHONE_CALLS SET " .
+            $UPDATE = "UPDATE  CUSTOMER_PHONE_CALLS SET " .
                     " CUSTOMER_PHONE_NUMBER= :CUSTOMER_PHONE_NUMBER, "
                     . "NUMBER_CALLED_TYPE_CODE= :NUMBER_CALLED_TYPE_CODE,NUMBER_CALLED= :NUMBER_CALLED,CALL_START_DATETIME= :CALL_START_DATETIME,"
                     . "CALL_END_DATETIME=:CALL_END_DATETIME,OTHER_DETAILS=:OTHER_DETAILS WHERE PHONE_CALL_ID= :PHONE_CALL_ID";
@@ -100,7 +100,7 @@ class PhoneCall {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.CUSTOMER_PHONE_CALLS WHERE PHONE_CALL_ID=" . $C_ID;
+            $DELETE = "DELETE FROM CUSTOMER_PHONE_CALLS WHERE PHONE_CALL_ID=" . $C_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
             // var_dump($stmt2->rowCount());

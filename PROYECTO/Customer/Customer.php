@@ -61,7 +61,7 @@ class Customer {
           
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "insert into PHONEBILL.CUSTOMER ".
+            $insert2 = "insert into CUSTOMER ".
                        "(`CUSTOMER_ID`,`CUSTOMER_NAME`,`CUSTOMER_EMAIL`,`CUSTOMER_ADDRESS`,`COMMERCIAL_OR_DOMAESTIC`,`OTHER_DETAILS`)
                 VALUES (:CUSTOMER_ID, :CUSTOMER_NAME, :CUSTOMER_EMAIL, :CUSTOMER_ADDRESS, :COMMERCIAL_OR_DOMAESTIC, :OTHER_DETAILS)";
             $stmt2 = $file_db->prepare($insert2);
@@ -84,7 +84,7 @@ class Customer {
           
         $file_db = Conexion::getConexionPDO();
         try {
-            $UPDATE = "UPDATE PHONEBILL.CUSTOMER SET".
+            $UPDATE = "UPDATE CUSTOMER SET".
                        "`CUSTOMER_NAME` = :CUSTOMER_NAME, ".
                     "`CUSTOMER_EMAIL` = :CUSTOMER_EMAIL,`CUSTOMER_ADDRESS` = :CUSTOMER_ADDRESS,".
                     "`COMMERCIAL_OR_DOMAESTIC` = :COMMERCIAL_OR_DOMAESTIC,`OTHER_DETAILS` = :OTHER_DETAILS"
@@ -111,13 +111,12 @@ class Customer {
           
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.CUSTOMER WHERE CUSTOMER_ID=".$C_ID;
+            $DELETE = "DELETE FROM CUSTOMER WHERE CUSTOMER_ID=".$C_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
-           // var_dump($stmt2->rowCount());
           header("Location: ListCustomer.php");
         } catch (Exception $e) {
-            return App::error($e->getMessage());
+            echo App::error($e->getMessage());
         } finally {
             
         }

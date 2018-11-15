@@ -43,7 +43,7 @@ class Tariff {
     public static function insertTariff($C_ID,$C_Type,$C_Name,$C_Rate,$C_Details) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "insert into PHONEBILL.tariffs(TARIFF_ID,TARIFF_TYPE_CODE,TARIFF_NAME,TARIFF_RATE,TARIFF_DATAILS)".
+            $insert2 = "insert into tariffs(TARIFF_ID,TARIFF_TYPE_CODE,TARIFF_NAME,TARIFF_RATE,TARIFF_DATAILS)".
                        "VALUES(?,?,?,?,?)";
             $stmt = $file_db->prepare($insert2);
             $stmt->bindParam(1, $C_ID, PDO::PARAM_INT); 
@@ -63,7 +63,7 @@ class Tariff {
     public static function updateTariff($C_ID,$C_TYPE,$C_NAME,$C_RATE,$C_DETAILS) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $stmt = $file_db->prepare("update PHONEBILL.tariffs ".
+            $stmt = $file_db->prepare("update tariffs ".
                                       "SET TARIFF_NAME = ?,".
                                       "TARIFF_TYPE_CODE = ?,".
                                       "TARIFF_RATE = ?,".
@@ -87,7 +87,7 @@ class Tariff {
           
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.tariffs WHERE TARIFF_ID=".$C_ID;
+            $DELETE = "DELETE FROM tariffs WHERE TARIFF_ID=".$C_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
            // var_dump($stmt2->rowCount());

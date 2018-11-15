@@ -8,7 +8,7 @@ class Addreess {
     public static function getAddresses() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT * FROM addresses");
+            $stmt = $dbh->prepare("SELECT * FROM ADDRESSES");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -25,12 +25,12 @@ class Addreess {
     public static function getAddressesRelations() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT customer_addresses.CUSTOMER_ADDRESS_ID,addresses.ADDRESS_ID,customer.CUSTOMER_ID,customer.CUSTOMER_NAME," .
-                    "ref_address_type.ADDRESS_TYPE_CODE ,ref_address_type.ADDRESS_TYPE_DESCRIPTION" .
-                    " FROM customer_addresses" .
-                    " LEFT JOIN PHONEBILL.addresses ON addresses.ADDRESS_ID = customer_addresses.ADDRESS_ID" .
-                    " LEFT JOIN PHONEBILL.customer ON customer.CUSTOMER_ID = customer_addresses.CUSTOMER_ID" .
-                    " LEFT JOIN PHONEBILL.ref_address_type ON ref_address_type.ADDRESS_TYPE_CODE = customer_addresses.ADDRESS_TYPE_CODE;");
+            $stmt = $dbh->prepare("SELECT CUSTOMER_ADDRESSES.CUSTOMER_ADDRESS_ID,ADDRESSES.ADDRESS_ID,CUSTOMER.CUSTOMER_ID,customer.CUSTOMER_NAME," .
+                    "REF_ADDRESS_TYPE.ADDRESS_TYPE_CODE ,REF_ADDRESS_TYPE.ADDRESS_TYPE_DESCRIPTION" .
+                    " FROM CUSTOMER_ADDRESSES" .
+                    " LEFT JOIN ADDRESSES ON ADDRESSES.ADDRESS_ID = CUSTOMER_ADDRESSES.ADDRESS_ID" .
+                    " LEFT JOIN CUSTOMER ON CUSTOMER.CUSTOMER_ID = CUSTOMER_ADDRESSES.CUSTOMER_ID" .
+                    " LEFT JOIN REF_ADDRESS_TYPE ON REF_ADDRESS_TYPE.ADDRESS_TYPE_CODE = CUSTOMER_ADDRESSES.ADDRESS_TYPE_CODE;");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -65,7 +65,7 @@ class Addreess {
     public static function insertAdress($A_LINE1, $A_LINE2, $A_LINE3, $A_CITY, $A_COUNTRY, $A_ZIP_CODE, $A_PROVINCE, $A_DETAILS) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "insert into PHONEBILL.ADDRESSES " .
+            $insert2 = "insert into ADDRESSES " .
                     "(`LINE1`,`LINE2`,`LINE3`,`CITY`,`ZIP_POSTCODE`,`STATE_PROVINCE_COUNTRY`,`COUNTRY`,`OTHER_DETAILS`)
                 VALUES (:LINE1, :LINE2, :LINE3, :CITY, :ZIP_POSTCODE, :STATE_PROVINCE_COUNTRY,:COUNTRY,:OTHER_DETAILS)";
             $stmt2 = $file_db->prepare($insert2);
@@ -90,7 +90,7 @@ class Addreess {
         $file_db = Conexion::getConexionPDO();
   //echo $A_ADDRESS_ID.$A_ADDRESS_TYPE_CODE.$A_CUSTOMER_ID.$A_DATE_ADDRESS_FROM.$A_DATE_ADDRESS_TO;
         try {
-            $insert2 = "insert into PHONEBILL.CUSTOMER_ADDRESSES " .
+            $insert2 = "insert into CUSTOMER_ADDRESSES " .
                     "(`ADDRESS_ID`,`ADDRESS_TYPE_CODE`,`CUSTOMER_ID`,`DATE_ADDRESS_FROM`,`DATE_ADDRESS_TO`)".
                " VALUES (:ADDRESS_ID, :ADDRESS_TYPE_CODE, :CUSTOMER_ID, :DATE_ADDRESS_FROM, :DATE_ADDRESS_TO)";
             $stmt2 = $file_db->prepare($insert2);
@@ -112,7 +112,7 @@ class Addreess {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "UPDATE PHONEBILL.ADDRESSES SET" .
+            $insert2 = "UPDATE ADDRESSES SET" .
                     "`LINE1` = :LINE1,`LINE2` = :LINE2,`LINE3` = :LINE3," .
                     "`CITY` = :CITY,`ZIP_POSTCODE`= :ZIP_POSTCODE,`STATE_PROVINCE_COUNTRY`= :STATE_PROVINCE_COUNTRY,`COUNTRY`= :COUNTRY,`OTHER_DETAILS`= :OTHER_DETAILS" .
                     " WHERE ADDRESS_ID = :ADDRESS_ID";
@@ -139,7 +139,7 @@ class Addreess {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.ADDRESSES WHERE ADDRESS_ID=" . $A_ID;
+            $DELETE = "DELETE FROM ADDRESSES WHERE ADDRESS_ID=" . $A_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
             // var_dump($stmt2->rowCount());
@@ -155,7 +155,7 @@ class Addreess {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.CUSTOMER_ADDRESSES WHERE CUSTOMER_ADDRESS_ID=" . $R_ID;
+            $DELETE = "DELETE FROM CUSTOMER_ADDRESSES WHERE CUSTOMER_ADDRESS_ID=" . $R_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
             // var_dump($stmt2->rowCount());

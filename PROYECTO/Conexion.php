@@ -17,7 +17,7 @@ class Conexion
     {
         $conexion = null;
         try {
-            $conexion = new PDO('mysql:host=localhost;dbname=id7841828_phonebill', 'id7841828_admin', 'admin');
+            $conexion = new PDO('mysql:host=sql3.freemysqlhosting.net;dbname=sql3265636', 'sql3265636', 'kLdTRzeLBU');
         } catch (Exception $e) {
             return false;
         }

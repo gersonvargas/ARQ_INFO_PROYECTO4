@@ -8,7 +8,7 @@ class PhoneNumber {
     public static function getPhoneNumbers() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT * FROM PHONEBILL.CUSTOMER_PHONE_NUMBERS");
+            $stmt = $dbh->prepare("SELECT * FROM CUSTOMER_PHONE_NUMBERS");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -62,7 +62,7 @@ class PhoneNumber {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "insert into PHONEBILL.CUSTOMER_PHONE_NUMBERS " .
+            $insert2 = "insert into CUSTOMER_PHONE_NUMBERS " .
                     " VALUES (:CUSTOMER_PHONE_NUMBER, :CUSTOMER_ID, :NUMBER_TYPE_CODE, "
                     . ":HELD_FROM_DATE, :HELD_TO_DATE, :OTHER_DETAILS)";
             $stmt2 = $file_db->prepare($insert2);
@@ -85,7 +85,7 @@ class PhoneNumber {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $UPDATE = "UPDATE  PHONEBILL.CUSTOMER_PHONE_NUMBERS SET " .
+            $UPDATE = "UPDATE  CUSTOMER_PHONE_NUMBERS SET " .
                     " CUSTOMER_ID= :CUSTOMER_ID, NUMBER_TYPE_CODE= :NUMBER_TYPE_CODE, "
                     . "HELD_FROM_DATE= :HELD_FROM_DATE,HELD_TO_DATE= :HELD_TO_DATE,OTHER_DETAILS= :OTHER_DETAILS WHERE CUSTOMER_PHONE_NUMBER= :CUSTOMER_PHONE_NUMBER";
             $stmt2 = $file_db->prepare($UPDATE);
@@ -108,7 +108,7 @@ class PhoneNumber {
 
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM PHONEBILL.CUSTOMER_PHONE_NUMBERS WHERE CUSTOMER_PHONE_NUMBER=" . $C_ID;
+            $DELETE = "DELETE FROM CUSTOMER_PHONE_NUMBERS WHERE CUSTOMER_PHONE_NUMBER=" . $C_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
             // var_dump($stmt2->rowCount());
