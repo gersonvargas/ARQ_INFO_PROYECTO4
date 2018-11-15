@@ -1,7 +1,7 @@
 <?php
 
 include_once './Address.php';
-echo $_POST['metodo'];
+
 if (isset($_POST['metodo']) && $_POST['metodo'] == 'agregarRelacion') {
     $A_ADDRESS_ID = $_POST['ADDRESS_ID'];
     $A_ADDRESS_TYPE_CODE = $_POST['ADDRESS_TYPE_CODE'];

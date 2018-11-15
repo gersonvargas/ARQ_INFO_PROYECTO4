@@ -6,9 +6,9 @@ class Tariff {
     public static function getTariffs() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT Tariff.TARIFF_ID, TariffType.TARIFF_TYPE_DESCRIPTION,".
-            "Tariff.TARIFF_NAME,Tariff.TARIFF_RATE,Tariff.TARIFF_DATAILS".
-            " FROM Tariffs Tariff INNER JOIN ref_tariff_types TariffType ON Tariff.TARIFF_TYPE_CODE = TariffType.TARIFF_TYPE_CODE");
+            $stmt = $dbh->prepare("SELECT T.TARIFF_ID, T.TARIFF_TYPE_DESCRIPTION,".
+            "T.TARIFF_NAME,T.TARIFF_RATE,T.TARIFF_DATAILS".
+            " FROM TARIFFS T INNER JOIN REF_TARIFF_TYPES TariffType ON T.TARIFF_TYPE_CODE = REF_TARIFF_TYPES.TARIFF_TYPE_CODE");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -25,7 +25,7 @@ class Tariff {
     public static function getTariffID($ID) {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT * FROM tariffs WHERE TARIFF_ID = '$ID'");
+            $stmt = $dbh->prepare("SELECT * FROM TARIFFS WHERE TARIFF_ID = '$ID'");
 
             $stmt->execute();
             $data = Array();
@@ -43,7 +43,7 @@ class Tariff {
     public static function insertTariff($C_ID,$C_Type,$C_Name,$C_Rate,$C_Details) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $insert2 = "insert into tariffs(TARIFF_ID,TARIFF_TYPE_CODE,TARIFF_NAME,TARIFF_RATE,TARIFF_DATAILS)".
+            $insert2 = "insert into TARIFFS(TARIFF_ID,TARIFF_TYPE_CODE,TARIFF_NAME,TARIFF_RATE,TARIFF_DATAILS)".
                        "VALUES(?,?,?,?,?)";
             $stmt = $file_db->prepare($insert2);
             $stmt->bindParam(1, $C_ID, PDO::PARAM_INT); 
@@ -63,7 +63,7 @@ class Tariff {
     public static function updateTariff($C_ID,$C_TYPE,$C_NAME,$C_RATE,$C_DETAILS) {
         $file_db = Conexion::getConexionPDO();
         try {
-            $stmt = $file_db->prepare("update tariffs ".
+            $stmt = $file_db->prepare("update TARIFFS ".
                                       "SET TARIFF_NAME = ?,".
                                       "TARIFF_TYPE_CODE = ?,".
                                       "TARIFF_RATE = ?,".
@@ -87,7 +87,7 @@ class Tariff {
           
         $file_db = Conexion::getConexionPDO();
         try {
-            $DELETE = "DELETE FROM tariffs WHERE TARIFF_ID=".$C_ID;
+            $DELETE = "DELETE FROM TARIFFS WHERE TARIFF_ID=".$C_ID;
             $stmt2 = $file_db->prepare($DELETE);
             $stmt2->execute();
            // var_dump($stmt2->rowCount());
