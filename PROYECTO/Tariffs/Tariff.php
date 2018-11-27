@@ -6,9 +6,9 @@ class Tariff {
     public static function getTariffs() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT T.TARIFF_ID, T.TARIFF_TYPE_DESCRIPTION,".
+            $stmt = $dbh->prepare("SELECT T.TARIFF_ID, REF_TARIFF_TYPES.TARIFF_TYPE_DESCRIPTION,".
             "T.TARIFF_NAME,T.TARIFF_RATE,T.TARIFF_DATAILS".
-            " FROM TARIFFS T INNER JOIN REF_TARIFF_TYPES TariffType ON T.TARIFF_TYPE_CODE = REF_TARIFF_TYPES.TARIFF_TYPE_CODE");
+            " FROM TARIFFS T INNER JOIN REF_TARIFF_TYPES  ON T.TARIFF_TYPE_CODE = REF_TARIFF_TYPES.TARIFF_TYPE_CODE");
             $stmt->execute();
             $data = Array();
             while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {

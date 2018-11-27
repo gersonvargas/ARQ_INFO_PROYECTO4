@@ -12,8 +12,8 @@ class Bill {
                                           "bill.PAYMENT_DUE_DATE,".
                                           "bill.ORIGINAL_AMOUNT_DUE,".
                                           "bill.AMOUNT_OUTSTANDING ".
-                                          "FROM bill_headers bill ".
-                                          "INNER JOIN customer_phone_numbers phoneNumber ".
+                                          "FROM BILL_HEADERS bill ".
+                                          "INNER JOIN CUSTOMER_PHONE_NUMBERS phoneNumber ".
                                           "ON bill.PHONE_NUMBER = phoneNumber.CUSTOMER_PHONE_NUMBER");
             $stmt->execute();
             $data = Array();

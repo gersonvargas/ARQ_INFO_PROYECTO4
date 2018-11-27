@@ -97,7 +97,7 @@ if (isset($_SESSION['error_msg'])) {
                 <div class="">
                     <nav class="navbar navbar-expand-md navbar-dark bg-light">
                         <div class="collapse navbar-collapse text-center" id="">
-                            
+
                             <p class="text-center"><b> Gerson Vargas G & Osvaldo Aguero &nbsp;|&nbsp;</b></p></br>
                             <p class="text-center"><b> Arquitectura de Información, Proyecto  4&nbsp;</b></p>
                             <p class="text-center"><b>|&nbsp;UNA 2018.</b></p></br>

@@ -25,7 +25,7 @@ class Addreess {
     public static function getAddressesRelations() {
         $dbh = Conexion::getConexionPDO();
         try {
-            $stmt = $dbh->prepare("SELECT CUSTOMER_ADDRESSES.CUSTOMER_ADDRESS_ID,ADDRESSES.ADDRESS_ID,CUSTOMER.CUSTOMER_ID,customer.CUSTOMER_NAME," .
+            $stmt = $dbh->prepare("SELECT CUSTOMER_ADDRESSES.CUSTOMER_ADDRESS_ID,ADDRESSES.ADDRESS_ID,CUSTOMER.CUSTOMER_ID,CUSTOMER.CUSTOMER_NAME," .
                     "REF_ADDRESS_TYPE.ADDRESS_TYPE_CODE ,REF_ADDRESS_TYPE.ADDRESS_TYPE_DESCRIPTION" .
                     " FROM CUSTOMER_ADDRESSES" .
                     " LEFT JOIN ADDRESSES ON ADDRESSES.ADDRESS_ID = CUSTOMER_ADDRESSES.ADDRESS_ID" .
